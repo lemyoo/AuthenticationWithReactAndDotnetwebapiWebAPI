@@ -10,14 +10,14 @@
                 Password="pass1",
                 GivenName="Emmanuel",
                 Surname="lartey",
-                Role="Adminustrator"},
+                Role="Administrator"},
             new UserModel() { 
                 UserName = "manny1",
                 EmailAddress = "e1@jmail.com",
                 Password="pass1",
                 Surname="lartey",
                 GivenName="Emmanuel1",
-                Role="Seller"},
+                Role="User"},
         };
     }
 }
