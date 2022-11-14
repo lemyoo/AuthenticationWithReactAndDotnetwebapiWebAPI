@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.Text;
+using AuthenticationWithReactAndDotnetwebapiWebAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//var connectionString = builder.Configuration.GetConnectionString("TestDB");
 var Configuration = builder.Configuration;
 // Add services to the container.
 
@@ -26,6 +27,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//For In Memory DB
+//builder.Services.AddDbContext<ContactsAPIDbContext>(options=>options.UseInMemoryDatabase("ContactDb"));
+
+builder.Services.AddDbContext<UserAPIDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("UserDB")));
 
 var app = builder.Build();
 
